@@ -1,0 +1,30 @@
+.image {
+    height: 100px;
+    width: 100px;
+}
+
+.item {
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+input {
+    margin-top: 30px;
+    }
+
+.task-7 {
+    margin-top: 30px;
+}
+
+#validation-input {
+    border: 3px solid #bdbdbd;
+    outline: none;
+}
+  
+#validation-input.valid {
+    border-color: #4caf50;
+}
+  
+#validation-input.invalid {
+    border-color: #f44336;
+}

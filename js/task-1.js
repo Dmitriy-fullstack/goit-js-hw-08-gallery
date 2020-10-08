@@ -1,9 +1,21 @@
-const itemEl = document.querySelectorAll('.item');
-// console.log(itemEl)
-console.log(`В списке ${itemEl.length} категории`)
-itemEl.forEach(itemEl => {
-    const titleEl = itemEl.firstElementChild.textContent
-    console.log(`Категория ${titleEl}`)
-    const categoryLiEl = itemEl.querySelectorAll('li')
-    console.log(`Количество элементов: ${categoryLiEl.length}`)
-});
+import galleryArray from './gallery-items.js';
+console.log(galleryArray)
+
+
+const galleryCollection = galleryArray.reduce((acc, {preview, original, description}) => {
+        acc += `<li class="gallery__item">
+        <a class="gallery__link" href="${original}">
+            <img class="gallery__image"
+                src="${preview}"
+                data-source="${original}"
+                alt="${description}"/>
+        </a>
+      </li>`;
+        return acc;
+    }, '')
+
+    console.log(galleryCollection)
+
+const galleryEl = document.querySelector('.gallery')
+
+    galleryEl.insertAdjacentHTML("beforeend", galleryCollection);

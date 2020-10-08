@@ -2,7 +2,7 @@ import galleryArray from './gallery-items.js';
 console.log(galleryArray)
 
 
-const galleryCollection = galleryArray.reduce((acc, {preview, original, description}) => {
+const galleryString = galleryArray.reduce((acc, {preview, original, description}) => {
         acc += `<li class="gallery__item">
         <a class="gallery__link" href="${original}">
             <img class="gallery__image"
@@ -14,8 +14,48 @@ const galleryCollection = galleryArray.reduce((acc, {preview, original, descript
         return acc;
     }, '')
 
-    console.log(galleryCollection)
+    
 
-const galleryEl = document.querySelector('.gallery')
+const galleryEl = document.querySelector('.js-gallery');
+galleryEl.insertAdjacentHTML("beforeend", galleryString);
 
-    galleryEl.insertAdjacentHTML("beforeend", galleryCollection);
+galleryEl.addEventListener('click', onGalleryClick);
+const lightboxEl = document.querySelector('.lightbox');
+const lightboxImageEl = document.querySelector('.lightbox__image');
+const btnCloseEl = document.querySelector('.lightbox__button');
+
+function onGalleryClick(evt) {
+    evt.preventDefault()
+    if (evt.target.nodeName !== 'IMG') {
+        return;
+    }
+        
+    lightboxEl.classList.add('is-open');
+    lightboxImageEl.src = evt.target.dataset.source;
+    lightboxImageEl.alt = evt.target.alt;
+
+    btnCloseEl.addEventListener('click', onBtnClose);
+    
+    return evt.target.dataset.source;
+}
+
+    function onBtnClose(evt) {
+        property.once = true;
+       
+
+    }
+
+    // const lightboxEl = document.querySelector('.lightbox');
+    // lightboxEl.classList.remove('is-open');
+    
+    // console.log(lightboxImageEl)
+    
+
+
+
+    
+    
+ 
+ 
+
+

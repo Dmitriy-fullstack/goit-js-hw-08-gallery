@@ -40,8 +40,8 @@ function onGalleryClick(evt) {
 }
 
     function onBtnClose(evt) {
-        property.once = true;
-       
+        // property.once = true;
+        lightboxEl.classList.remove('is-open');
 
     }
 

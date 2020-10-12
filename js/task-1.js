@@ -1,7 +1,8 @@
+// Импорт картинок
 import galleryArray from './gallery-items.js';
 console.log(galleryArray)
 
-
+// Создание галереи
 const galleryString = galleryArray.reduce((acc, {preview, original, description}) => {
         acc += `<li class="gallery__item">
         <a class="gallery__link" href="${original}">
@@ -19,11 +20,13 @@ const galleryString = galleryArray.reduce((acc, {preview, original, description}
 const galleryEl = document.querySelector('.js-gallery');
 galleryEl.insertAdjacentHTML("beforeend", galleryString);
 
+
 galleryEl.addEventListener('click', onGalleryClick);
 const lightboxEl = document.querySelector('.lightbox');
 const lightboxImageEl = document.querySelector('.lightbox__image');
 const btnCloseEl = document.querySelector('[data-action="close-lightbox"]');
 
+// Открытие модалки
 function onGalleryClick(evt) {
     evt.preventDefault()
     if (evt.target.nodeName !== 'IMG') {
@@ -40,7 +43,7 @@ function onGalleryClick(evt) {
 }
  
     
-
+// Закрытие модалки
     function onBtnClose() {
         
         lightboxEl.classList.remove('is-open');
@@ -48,15 +51,12 @@ function onGalleryClick(evt) {
 
     }
 
+    // Очистка при закрытиии
     function clearImageBox() {
         lightboxImageEl.src = "";
         lightboxImageEl.alt = "";
     }
 
-    // const lightboxEl = document.querySelector('.lightbox');
-    // lightboxEl.classList.remove('is-open');
-    
-    // console.log(lightboxImageEl)
     
 
 

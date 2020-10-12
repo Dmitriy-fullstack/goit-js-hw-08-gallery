@@ -22,7 +22,7 @@ galleryEl.insertAdjacentHTML("beforeend", galleryString);
 galleryEl.addEventListener('click', onGalleryClick);
 const lightboxEl = document.querySelector('.lightbox');
 const lightboxImageEl = document.querySelector('.lightbox__image');
-const btnCloseEl = document.querySelector('.lightbox__button');
+const btnCloseEl = document.querySelector('[data-action="close-lightbox"]');
 
 function onGalleryClick(evt) {
     evt.preventDefault()
@@ -38,11 +38,19 @@ function onGalleryClick(evt) {
     
     return evt.target.dataset.source;
 }
+ 
+    
 
-    function onBtnClose(evt) {
-        // property.once = true;
+    function onBtnClose() {
+        
         lightboxEl.classList.remove('is-open');
+        clearImageBox();
 
+    }
+
+    function clearImageBox() {
+        lightboxImageEl.src = "";
+        lightboxImageEl.alt = "";
     }
 
     // const lightboxEl = document.querySelector('.lightbox');
